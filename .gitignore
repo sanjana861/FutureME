@@ -1,0 +1,8 @@
+# Ignore the node dependencies directory
+node_modules/
+
+# Ignore the environment configuration file (contains secrets)
+.env
+
+# Ignore the specific SQLite database file
+database/futureme.sqlite
