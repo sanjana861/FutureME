@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureMe AI — Workspace Terminal Operating System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+    <div class="app-viewport">
+        
+        <!-- SIDE NAVIGATION CONTROL MATRICES SIDEBAR -->
+        <aside class="app-sidebar">
+            <div class="sidebar-logo">
+                <div class="brand-dot"></div>FutureMe OS
+            </div>
+            <ul class="sidebar-nav">
+                <li><button class="sidebar-item-btn active" data-target="dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</button></li>
+                <li><button class="sidebar-item-btn" data-target="mission"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>Today's Mission</button></li>
+                <li><button class="sidebar-item-btn" data-target="roadmap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>Career Roadmap</button></li>
+                <li><button class="sidebar-item-btn" data-target="planner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Weekly Planner</button></li>
+                <li><button class="sidebar-item-btn" data-target="routine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Daily Routine</button></li>
+                <li><button class="sidebar-item-btn" data-target="skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Skill Graph</button></li>
+                <li><button class="sidebar-item-btn" data-target="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>Projects Builder</button></li>
+                <li><button class="sidebar-item-btn" data-target="resume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Resume Audit</button></li>
+                <li><button class="sidebar-item-btn" data-target="linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn Branding</button></li>
+                <li><button class="sidebar-item-btn" data-target="coach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Interview Coach</button></li>
+                <li><button class="sidebar-item-btn" data-target="mentor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 1 0 0 10 5 5 0 1 0 0-10z"/><path d="M4.93 19.07a10 10 0 0 1 14.14 0"/></svg>AI Mentor Chat</button></li>
+                <li><button class="sidebar-item-btn" data-target="letters"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Future Letters</button></li>
+                <li><button class="sidebar-item-btn" data-target="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>Progress</button></li>
+                <li><button class="sidebar-item-btn" data-target="history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>History</button></li>
+                <li><button class="sidebar-item-btn" data-target="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</button></li>
+            </ul>
+            <div class="sidebar-user-block">
+                <div class="user-block-title" id="ui-side-name-badge">Sarah Jenkins</div>
+                <div class="user-block-subtitle">Ecosystem Instance Sync</div>
+            </div>
+        </aside>
+        <!-- MAIN MONITOR CONTENT WORKSPACE INTERFACES FLUID PANELS -->
+        <main class="app-main">
+            
+            <!-- MODULE 1: MAIN DASHBOARD VIEW OVERVIEW -->
+            <div class="app-view-module active" id="view-dashboard">
+                <div class="module-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                    <div>
+                        <h1 id="ui-dash-welcome-heading">Welcome back, Sarah</h1>
+                        <p id="ui-meta-target-job">Targeting Lead AI Engineer @ OpenAI</p>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <a href="/api/export/pdf" class="btn btn-secondary" style="padding: 8px 16px; font-size:0.8rem;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>PDF</a>
+                        <a href="/api/export/markdown" class="btn btn-secondary" style="padding: 8px 16px; font-size:0.8rem;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>MD</a>
+                        <a href="/api/export/json" class="btn btn-secondary" style="padding: 8px 16px; font-size:0.8rem;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>JSON</a>
+                    </div>
+                </div>
+                <div class="card-grid-2">
+                    <div class="app-card progress-ring-box">
+                        <svg class="circle-svg" width="90" height="90">
+                            <circle class="circle-bg" cx="45" cy="45" r="40"/>
+                            <circle class="circle-fill" id="ui-dash-progress-fill" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="75.3"/>
+                        </svg>
+                        <div>
+                            <h3 style="margin:0;">Today's Sprints Complete</h3>
+                            <p style="font-size: 1.5rem; font-weight:700; margin-top:4px;" id="ui-dash-progress-text">70%</p>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <h3>Next Roadmap Step</h3>
+                        <p style="font-size: 1.15rem; font-weight:600;" id="ui-dash-next-step">Deploy Advanced Neural Token Optimizer Application</p>
+                        <p style="font-size: 0.85rem; color: var(--accent-secondary); margin-top:4px;" id="ui-dash-next-date">Estimated: August 14</p>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <h3>Latest Mentor Advice</h3>
+                    <p style="font-size:0.925rem; line-height:1.6; color: var(--text-secondary);" id="ui-dash-rec-text">"Based on changing requirement criteria inside your target enterprise domain, we suggest replacing standard parsing scripts with highly optimized network graph algorithms immediately."</p>
+                </div>
+            </div>
+
+            <!-- MODULE 2: TODAY'S MISSION RUNTIME CHECKLISTS -->
+            <div class="app-view-module" id="view-mission">
+                <div class="module-header">
+                    <h1>Today's Sprints</h1>
+                    <p>Complete your daily study and coding blocks.</p>
+                </div>
+                <div class="app-card" id="ui-tasks-list-container">
+                    <!-- Tasks will populate here dynamically -->
+                </div>
+            </div>
+
+            <!-- MODULE 3: SYSTEM SEQUENTIAL CAREER ROADMAPS -->
+            <div class="app-view-module" id="view-roadmap">
+                <div class="module-header">
+                    <h1>Strategic Career Roadmap</h1>
+                    <p>Timeline stages and milestones to achieve your goals.</p>
+                </div>
+                <div class="app-timeline" id="ui-roadmap-timeline-container">
+                    <!-- Roadmap phases populate here -->
+                </div>
+            </div>
+
+            <!-- MODULE 4: MATRIX WEEKLY LAYOUT CALENDARS CALENDAR -->
+            <div class="app-view-module" id="view-planner">
+                <div class="module-header">
+                    <h1>Weekly Planner</h1>
+                    <p>Your schedule routine block mapping for the week.</p>
+                </div>
+                <div class="planner-calendar-grid" id="ui-weekly-planner-grid">
+                    <!-- Days and routines will load here -->
+                </div>
+
+                <!-- AI ACCOUNTABILITY CHECK-IN -->
+                <div class="app-card" style="margin-top: 24px; border-left: 3px solid var(--accent);">
+                    <h3>AI Weekly Progress Check-in</h3>
+                    <p style="font-size:0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+                        Report your weekly progress. Your AI coach will review it, change task difficulty, or update your schedule.
+                    </p>
+                    <form id="ui-weekly-checkin-form" onsubmit="submitWeeklyCheckin(event)">
+                        <div style="margin-bottom: 12px;">
+                            <label style="font-size:0.85rem; display:block; margin-bottom:6px; color:#FFF;">Did you complete your goals this week?</label>
+                            <select id="ui-checkin-status" style="padding: 10px; background: var(--bg-secondary); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); color: #FFF; width: 100%; font-family: var(--font-sans);">
+                                <option value="yes">Yes, I completed all goals!</option>
+                                <option value="partial">Partially (I did some tasks)</option>
+                                <option value="no">No, I struggled this week</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 16px;">
+                            <label style="font-size:0.85rem; display:block; margin-bottom:6px; color:#FFF;">Explain what went well or where you got stuck:</label>
+                            <input type="text" id="ui-checkin-feedback" placeholder="e.g. Finished coding blocks but struggled with system design theory." required style="padding: 12px; background: var(--bg-secondary); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); color: #FFF; width: 100%; font-family: var(--font-sans);">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="ui-checkin-submit-btn">Submit Check-in</button>
+                    </form>
+                    <div id="ui-checkin-result-box" style="margin-top:20px; padding:16px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid var(--border-glow); display:none;">
+                        <strong style="color: var(--accent-secondary); display:block; margin-bottom:6px; font-size:0.95rem;">Coach Assessment & Changes:</strong>
+                        <p id="ui-checkin-feedback-text" style="font-size:0.9rem; color: var(--text-secondary); line-height:1.5;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 5: DAILY REPETITIVE ACTION MATRIX ROUTINES -->
+            <div class="app-view-module" id="view-routine">
+                <div class="module-header">
+                    <h1>Daily Routines</h1>
+                    <p>Hourly study slots mapped to your daily schedule limits.</p>
+                </div>
+                <div class="app-card">
+                    <p style="margin-bottom:20px; font-size:0.95rem;">Your daily learning time limit is configured to: <strong id="ui-meta-hours-budget">2 Hours</strong> per day.</p>
+                    <div style="display:flex; flex-direction:column; gap:16px;" id="ui-daily-routine-container">
+                        <!-- Daily routine hourly items load here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 6: GRANULAR VISUAL SKILLS GRAPHS ANALYSIS GRAPH -->
+            <div class="app-view-module" id="view-skills">
+                <div class="module-header">
+                    <h1>Capabilities Graph</h1>
+                    <p>Current proficiency scores mapped against market requirements.</p>
+                </div>
+                <div class="card-grid-2">
+                    <div class="app-card">
+                        <h3>Weak Skill Gaps</h3>
+                        <p style="color: var(--color-danger); font-weight:600;" id="ui-meta-weakness-label">System design gaps</p>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px;">
+                            Your AI Mentor regularly pushes goals to improve these specific areas.
+                        </p>
+                    </div>
+                    <div class="app-card" id="ui-skills-list-container">
+                        <h3>Skills Telemetry</h3>
+                        <!-- Skills load here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 7: PRODUCTION CARD BLUEPRINTS PROJECTS -->
+            <div class="app-view-module" id="view-projects">
+                <div class="module-header">
+                    <h1>Curated Portfolio Projects</h1>
+                    <p>Four specialized projects designed by AI to make you job-ready.</p>
+                </div>
+                <div class="card-grid-2" id="ui-projects-grid-container">
+                    <!-- Projects populate here -->
+                </div>
+            </div>
+
+            <!-- MODULE 8: ATS SYSTEM OPTIMIZER RESUME AUDITS -->
+            <div class="app-view-module" id="view-resume">
+                <div class="module-header">
+                    <h1>Resume Audit</h1>
+                    <p>ATS scoring check and direct wording corrections to pass filters.</p>
+                </div>
+                <div class="card-grid-3">
+                    <div class="app-card" style="text-align:center;">
+                        <h3>ATS Audit Index</h3>
+                        <p style="font-size:2.5rem; font-weight:700; color:var(--color-success)">88</p>
+                        <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:4px;">Ready Tier Status</p>
+                    </div>
+                    <div class="app-card" style="grid-column: span 2;" id="ui-resume-improvements-container">
+                        <h3>Suggested Wording Edits</h3>
+                        <!-- Resume items load here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 9: COPYWRITING BRANDING PIPELINE LINKEDIN -->
+            <div class="app-view-module" id="view-linkedin">
+                <div class="module-header">
+                    <h1>LinkedIn Branding</h1>
+                    <p>Recruiter-focused profile headlines and biographic summaries.</p>
+                </div>
+                <div class="app-card" style="margin-bottom:24px;">
+                    <h3>Suggested LinkedIn Headline</h3>
+                    <div id="ui-linkedin-headline" style="background:rgba(0,0,0,0.2); border:1px solid var(--border-glow); padding:16px; border-radius:6px; font-family:monospace; font-size:0.95rem; color:#FFF;">
+                        Loading Headline...
+                    </div>
+                </div>
+                <div class="app-card" style="margin-bottom:24px;">
+                    <h3>LinkedIn 'About' Section Bio</h3>
+                    <p id="ui-linkedin-about" style="font-size:0.9rem; color:var(--text-secondary); line-height:1.6; white-space: pre-line;">
+                        Loading Bio...
+                    </p>
+                </div>
+                <div class="app-card">
+                    <h3>Networking & Outreach Strategy</h3>
+                    <div id="ui-linkedin-posts" style="font-size:0.9rem; color:var(--text-secondary); line-height:1.5;">
+                        <!-- outreach strategy list loads here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 10: SIMULATED INTERVIEW COACH MOCKS -->
+            <div class="app-view-module" id="view-coach">
+                <div class="module-header">
+                    <h1>Interview Preparation Coach</h1>
+                    <p>Review key technical and behavioral questions matched to your target role.</p>
+                </div>
+                <div class="card-grid-2" id="ui-interview-coach-container">
+                    <!-- Questions load here -->
+                </div>
+            </div>
+
+            <!-- MODULE 11: RUNTIME CHAT INTERACTION WINDOW AI MENTOR CHAT -->
+            <div class="app-view-module" id="view-mentor">
+                <div class="module-header">
+                    <h1>AI Mentor Chat</h1>
+                    <p>Ask career advice and schedule queries from your active AI mentor.</p>
+                </div>
+                <div class="chat-window">
+                    <div class="chat-scroller" id="ui-chat-scroller-node">
+                        <!-- Chat history loads here -->
+                    </div>
+                    <div class="chat-input-bar">
+                        <input type="text" id="ui-chat-input-node" placeholder="Type a career question..." onkeydown="if(event.key === 'Enter') sendUserChatMessage()">
+                        <button class="btn btn-primary" onclick="sendUserChatMessage()" id="ui-chat-send-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 12: HANDWRITTEN EMOTIONAL PROJECTIONS LETTERS FUTURE LETTERS -->
+            <div class="app-view-module" id="view-letters">
+                <div class="module-header" style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h1>Future Letters</h1>
+                        <p>Monthly letters written by your future self reflecting on your task progress.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="triggerNextFutureLetter()" id="ui-letter-generate-btn" style="padding: 8px 16px; font-size:0.8rem;">Generate Next Month's Letter</button>
+                </div>
+                <div style="display:flex; gap:20px; align-items:flex-start; margin-top:20px; flex-wrap:wrap;">
+                    <div class="app-card" style="flex:1; min-width:300px;">
+                        <h3>Letters History</h3>
+                        <ul id="ui-letters-history-list" style="list-style:none; margin-top:12px; display:flex; flex-direction:column; gap:10px;">
+                            <!-- Letter list items -->
+                        </ul>
+                    </div>
+                    <div class="letter-sheet-paper" style="flex:2; min-width:350px;" id="ui-active-letter-body">
+                        <!-- Active letter content -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 13: GITHUB STYLE TRACKING MATRIX GRAPH PROGRESS TRACKER -->
+            <div class="app-view-module" id="view-progress">
+                <div class="module-header">
+                    <h1>Progress Tracker</h1>
+                    <p>Your daily activity checklist heatmap grid and target achievements.</p>
+                </div>
+                <div class="app-card" style="margin-bottom:24px;">
+                    <h3>Sprints Achievement Heatmap</h3>
+                    <div class="heatmap-matrix-grid" id="ui-progress-heatmap">
+                        <!-- Heatmap cells populated dynamically -->
+                    </div>
+                </div>
+                <div class="app-card">
+                    <h3>Unlocked OS Achievements</h3>
+                    <div id="ui-achievements-list-container" style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+                        <!-- Achievements load here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 15: HISTORICAL REPORTS & COMPARISON -->
+            <div class="app-view-module" id="view-history">
+                <div class="module-header">
+                    <h1>Report History & Comparison</h1>
+                    <p>Compare previous profiles and weekly reports to track your improvements over time.</p>
+                </div>
+                <div class="card-grid-2">
+                    <div class="app-card">
+                        <h3>Select Reports to Compare</h3>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">Choose two reports from the list below:</p>
+                        <div style="display:flex; flex-direction:column; gap:10px; max-height:250px; overflow-y:auto; padding-right:5px;" id="ui-history-reports-list">
+                            <!-- Report checkboxes will load here -->
+                        </div>
+                        <button class="btn btn-primary" style="margin-top:16px; width:100%;" id="ui-history-compare-btn">Compare Selected Reports</button>
+                    </div>
+                    <div class="app-card" id="ui-history-comparison-result" style="display:none; border-left:3px solid var(--accent-secondary);">
+                        <h3>Comparison Analysis</h3>
+                        <div style="margin-top:12px;" id="ui-history-comparison-content">
+                            <!-- Diff output will load here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 14: PLATFORM INTERFACES SETTINGS CONFIGURATIONS SETTINGS -->
+            <div class="app-view-module" id="view-settings">
+                <div class="module-header">
+                    <h1>Workspace Settings</h1>
+                    <p>Manage themes, notification schedules, and account details.</p>
+                </div>
+                <div class="app-card">
+                    <h3 style="border-bottom:1px solid var(--border-subtle); padding-bottom:8px; margin-bottom:16px;">Ecosystem Parameters</h3>
+                    
+                    <form id="ui-settings-form" onsubmit="saveWorkspaceSettings(event)" style="display:flex; flex-direction:column; gap:16px;">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:600px;">
+                            <div>
+                                <label style="font-size:0.85rem; display:block; margin-bottom:6px; color:#FFF;">Full Name</label>
+                                <input type="text" id="setting-name" style="padding:10px; background:var(--bg-secondary); border:1px solid var(--border-glow); border-radius:var(--radius-sm); color:#FFF; width:100%;">
+                            </div>
+                            <div>
+                                <label style="font-size:0.85rem; display:block; margin-bottom:6px; color:#FFF;">Current Role</label>
+                                <input type="text" id="setting-role" style="padding:10px; background:var(--bg-secondary); border:1px solid var(--border-glow); border-radius:var(--radius-sm); color:#FFF; width:100%;">
+                            </div>
+                            <div>
+                                <label style="font-size:0.85rem; display:block; margin-bottom:6px; color:#FFF;">Theme</label>
+                                <select id="setting-theme" style="padding:10px; background:var(--bg-secondary); border:1px solid var(--border-glow); border-radius:var(--radius-sm); color:#FFF; width:100%;">
+                                    <option value="dark">Dark Matrix</option>
+                                    <option value="light">Clean Light</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size:0.85rem; display:block; margin-bottom:6px; color:#FFF;">Daily Study Reminder</label>
+                                <input type="time" id="setting-reminder" style="padding:10px; background:var(--bg-secondary); border:1px solid var(--border-glow); border-radius:var(--radius-sm); color:#FFF; width:100%;">
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <input type="checkbox" id="setting-notify" style="width:16px; height:16px;">
+                            <label for="setting-notify" style="font-size:0.85rem;">Send daily email digest and updates</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:fit-content;">Save Configurations</button>
+                    </form>
+
+                    <hr style="border:none; border-top:1px solid var(--border-subtle); margin:24px 0;">
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                        <button class="btn btn-secondary" onclick="handleLogout()">Terminated Session Session (Logout)</button>
+                        <button class="btn btn-secondary" style="color:var(--color-danger); border-color:var(--color-danger);" onclick="triggerDeleteAccount()">Purge Workspace (Delete Account)</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

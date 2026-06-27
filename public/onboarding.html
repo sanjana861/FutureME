@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureMe AI — Tell Us About Yourself</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/onboarding.css">
+</head>
+<body>
+
+    <main class="onboarding-viewport" id="ui-wizard-container">
+        <div class="wizard-card">
+            
+            <!-- Simple Progress Indicator -->
+            <div class="tracker-block">
+                <div class="tracker-metrics">
+                    <span id="display-step-meta">Step 1 of 7</span>
+                    <span id="display-step-percentage">14%</span>
+                </div>
+                <div class="tracker-bar-bg">
+                    <div class="tracker-bar-fill" id="ui-indicator-fill"></div>
+                </div>
+            </div>
+
+            <!-- Main Form -->
+            <form id="onboarding-form-engine" onsubmit="executeSystemGenerationPipeline(event)">
+                
+                <!-- STEP 1: PERSONAL DETAILS -->
+                <div class="step-panel active" data-step="1">
+                    <h2>Personal Details</h2>
+                    <p class="step-desc">Let’s start with some simple basics about who you are.</p>
+                    <div class="form-grid-2">
+                        <div class="input-block span-all">
+                            <label>Full Name *</label>
+                            <input type="text" id="in-name" placeholder="e.g. Sarah Jenkins" required>
+                        </div>
+                        <div class="input-block">
+                            <label>Age (Optional)</label>
+                            <input type="number" id="in-age" placeholder="e.g. 26">
+                        </div>
+                        <div class="input-block">
+                            <label>Country (Optional)</label>
+                            <input type="text" id="in-country" placeholder="e.g. United States">
+                        </div>
+                        <div class="input-block span-all">
+                            <label>Current Role / Job Title (Optional)</label>
+                            <input type="text" id="in-role" placeholder="e.g. Junior Software Engineer, Student">
+                        </div>
+                        <div class="input-block span-all">
+                            <label>Current Projects (Optional)</label>
+                            <input type="text" id="in-current-projects" placeholder="e.g. Personal blog, basic Python script">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: CAREER GOALS -->
+                <div class="step-panel" data-step="2">
+                    <h2>Your Career Goals</h2>
+                    <p class="step-desc">Where do you want to see yourself in the future?</p>
+                    <div class="form-grid-2">
+                        <div class="input-block span-all">
+                            <label>Your Dream Job Title *</label>
+                            <input type="text" id="in-target-title" placeholder="e.g. Lead AI Engineer" required>
+                        </div>
+                        <div class="input-block span-all">
+                            <label>Dream Company *</label>
+                            <input type="text" id="in-target-company" placeholder="e.g. OpenAI" required>
+                        </div>
+                        <div class="input-block">
+                            <label>Target Year to Achieve This (Optional)</label>
+                            <input type="number" id="in-target-year" placeholder="e.g. 2029">
+                        </div>
+                        <div class="input-block">
+                            <label>Expected Salary (Optional)</label>
+                            <input type="text" id="in-salary" placeholder="e.g. $80,000 / year">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: SKILLS -->
+                <div class="step-panel" data-step="3">
+                    <h2>Your Skills & Tech Stack</h2>
+                    <p class="step-desc">Tell us what tools you already know, and where you feel stuck.</p>
+                    <div class="input-block">
+                        <label>Languages or Tools You Know (Optional)</label>
+                        <input type="text" id="in-languages" placeholder="e.g. JavaScript, Python, Figma">
+                    </div>
+                    <div class="input-block">
+                        <label>What is your biggest technical weakness? (Optional)</label>
+                        <input type="text" id="in-weakness" placeholder="e.g. System design, algorithms, advanced CSS">
+                    </div>
+                    <div class="input-block">
+                        <label>Confidence Level *</label>
+                        <select id="in-confidence" required style="width: 100%; padding: 12px; background: var(--bg-secondary); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); color: #FFF; font-family: var(--font-sans);">
+                            <option value="Beginner">Beginner (Just starting)</option>
+                            <option value="Intermediate" selected>Intermediate (Built some things)</option>
+                            <option value="Advanced">Advanced (Experienced developer)</option>
+                        </select>
+                    </div>
+                    <div class="input-block">
+                        <label>What is your biggest struggle? (Optional)</label>
+                        <input type="text" id="in-struggles" placeholder="e.g. Lack of structure, finding focus">
+                    </div>
+                </div>
+
+                <!-- STEP 4: TIME CHALLENGES -->
+                <div class="step-panel" data-step="4">
+                    <h2>Daily Availability & Style</h2>
+                    <p class="step-desc">How much time do you have to study, and how do you prefer to learn?</p>
+                    <div class="form-grid-2">
+                        <div class="input-block span-all">
+                            <label>How many hours can you study per day? *</label>
+                            <input type="text" id="in-hours" placeholder="e.g. 2 hours" required>
+                        </div>
+                        <div class="input-block span-all">
+                            <label>Preferred Learning Style *</label>
+                            <select id="in-learning-style" required style="width: 100%; padding: 12px; background: var(--bg-secondary); border: 1px solid var(--border-glow); border-radius: var(--radius-sm); color: #FFF; font-family: var(--font-sans);">
+                                <option value="Hands-on Projects" selected>Hands-on Projects (Learn by building)</option>
+                                <option value="Videos & Visuals">Videos & Visual Diagrams</option>
+                                <option value="Books & Docs">Reading Books & Documentation</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5: PROFILES -->
+                <div class="step-panel" data-step="5">
+                    <h2>Links & Resume</h2>
+                    <p class="step-desc">Add your online profiles and upload your resume for analysis.</p>
+                    <div class="input-block">
+                        <label>GitHub Profile Link (Optional)</label>
+                        <input type="text" id="in-github" placeholder="github.com/yourusername">
+                    </div>
+                    <div class="input-block">
+                        <label>LinkedIn Profile Link (Optional)</label>
+                        <input type="text" id="in-linkedin" placeholder="linkedin.com/in/yourusername">
+                    </div>
+                    <div class="input-block span-all">
+                        <label>Portfolio Link (Optional)</label>
+                        <input type="text" id="in-portfolio" placeholder="e.g. yourportfolio.com">
+                    </div>
+                    <div class="input-block span-all">
+                        <label>Upload Resume Document (Optional - PDF, TXT, DOCX)</label>
+                        <input type="file" id="in-resume" accept=".pdf,.docx,.doc,.txt" style="color: var(--text-secondary); margin-top: 6px;">
+                    </div>
+                </div>
+
+                <!-- STEP 6: MENTOR PERSONALITY -->
+                <div class="step-panel" data-step="6">
+                    <h2>Choose an AI Personality</h2>
+                    <p class="step-desc">Pick the tone that helps you learn best.</p>
+                    <div class="selector-grid" id="mentor-grid">
+                        <div class="select-card selected" onclick="selectMentorOption(this, 'Strict Mentor')">
+                            <h4>Strict Mentor</h4>
+                            <p>Direct, no-nonsense feedback to push your boundaries quickly.</p>
+                        </div>
+                        <div class="select-card" onclick="selectMentorOption(this, 'Friendly Mentor')">
+                            <h4>Friendly Coach</h4>
+                            <p>Encouraging, supportive guidance with step-by-step motivation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 7: REVIEW SUMMARY -->
+                <div class="step-panel" data-step="7">
+                    <h2>Review Your Setup</h2>
+                    <p class="step-desc">Make sure everything looks correct before we activate your system.</p>
+                    <div class="summary-container" id="ui-summary-mount">
+                        <!-- Summary points dynamically populate here -->
+                    </div>
+                </div>
+
+                <!-- Footer Buttons -->
+                <div class="wizard-actions">
+                    <button type="button" class="btn btn-secondary" id="action-prev" onclick="processStepNavigation(-1)" style="visibility: hidden;">Back</button>
+                    <button type="button" class="btn btn-primary" id="action-next" onclick="processStepNavigation(1)">Next Step</button>
+                    <button type="submit" class="btn btn-primary" id="action-submit" style="display: none; background: linear-gradient(135deg, var(--accent) 0%, #9e85ff 100%);">Generate My Dashboard</button>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+    <!-- Friendly Loading Overlay -->
+    <div class="loading-viewport" id="ui-loading-overlay">
+        <div class="orb-orchestration">
+            <div class="glowing-core"></div>
+            <div class="matrix-ring ring-alpha"></div>
+            <div class="matrix-ring ring-beta"></div>
+        </div>
+        <div class="loading-ticker-text" id="ui-ticker-message">Setting up your profile tracking space...</div>
+    </div>
+
+    <script src="js/onboarding.js"></script>
+</body>
+</html>

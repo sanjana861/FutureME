@@ -1,0 +1,397 @@
+/* ==========================================================================
+   LANDING PAGE ARCHITECTURE & INTERACTIVES
+   ========================================================================== */
+   
+/* Sticky Header Navigation */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 72px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(9, 9, 11, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: var(--transition-premium);
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+}
+
+.brand-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: var(--transition-premium);
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Hero Frame */
+.hero {
+    padding: 120px 0 80px 0;
+    position: relative;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.hero-left h1 {
+    font-size: 3.75rem;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+}
+
+.hero-left p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 520px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+}
+
+/* Dashboard Mockup & Interactive Terminal */
+.dashboard-mockup {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    min-height: 400px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    position: relative;
+}
+
+.mockup-header {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+}
+
+.demo-terminal {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    min-height: 280px;
+}
+
+.terminal-input-line {
+    display: flex;
+    gap: 10px;
+    color: var(--accent-secondary);
+    margin-bottom: 20px;
+}
+
+.terminal-cursor {
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+.output-block {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--transition-premium);
+    margin-bottom: 16px;
+}
+
+.output-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Outcomes Grid */
+.outcomes {
+    padding: 100px 0;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 64px auto;
+}
+
+.outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.outcome-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    transition: var(--transition-premium);
+}
+
+.outcome-card:hover {
+    border-color: rgba(124, 92, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+.icon-wrapper {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-bottom: 24px;
+}
+
+.outcome-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+.outcome-card p {
+    font-size: 0.925rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* How It Works Timeline Layout */
+.timeline {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+}
+
+.timeline-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.timeline-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    padding: 40px 32px;
+    border-radius: var(--radius-lg);
+}
+
+.step-badge {
+    position: absolute;
+    top: -16px;
+    left: 32px;
+    background: var(--accent);
+    color: #FFF;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Authentication Overlay Engine */
+.auth-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(9, 9, 11, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.auth-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.auth-modal {
+    background: #111217;
+    border: 1px solid var(--border-glow);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+    position: relative;
+    transform: scale(0.95);
+    transition: var(--transition-premium);
+}
+
+.auth-overlay.active .auth-modal {
+    transform: scale(1);
+}
+
+.close-auth {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition-premium);
+}
+
+.close-auth:hover { color: var(--text-primary); }
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 24px;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.auth-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.auth-form-wrapper { display: none; }
+.auth-form-wrapper.active { display: block; }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-glow);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    color: #FFF;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: var(--transition-premium);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.oauth-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #FFF;
+    color: #000;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    font-weight: 500;
+    font-size: 0.925rem;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 20px;
+    transition: var(--transition-premium);
+}
+
+.oauth-btn:hover { background: #E4E4E7; }
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.divider:not(:empty)::before { margin-right: .75em; }
+.divider:not(:empty)::after { margin-left: .75em; }
+
+/* Responsive Grid Adaptation */
+@media(max-width: 968px) {
+    .hero-layout { grid-template-columns: 1fr; text-align: center; }
+    .hero-left p { margin: 0 auto 40px auto; }
+    .hero-actions { justify-content: center; }
+    .outcomes-grid, .timeline-layout { grid-template-columns: 1fr; }
+}
