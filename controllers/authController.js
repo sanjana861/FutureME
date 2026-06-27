@@ -35,32 +35,44 @@ async function signup(req, res) {
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    // Save user
-    const result = await db.run(
-      'INSERT INTO users (email, password_hash) VALUES (?, ?)',
-      [email.toLowerCase(), passwordHash]
-    );
-    const userId = result.lastID;
+    // Save user and related settings/history/achievements in a transaction
+    await db.run('BEGIN TRANSACTION');
+    let userId;
+    try {
+      console.log(`[ONBOARDING_LOG] [${new Date().toISOString()}] [USER_CREATION] [START] Creating user with email: ${email.toLowerCase()}`);
+      const result = await db.run(
+        'INSERT INTO users (email, password_hash) VALUES (?, ?)',
+        [email.toLowerCase(), passwordHash]
+      );
+      userId = result.lastID;
 
-    // Create default settings for user
-    await db.run('INSERT INTO settings (user_id, theme, notify_email, reminder_time) VALUES (?, ?, ?, ?)', [
-      userId,
-      'dark',
-      1,
-      '09:00'
-    ]);
+      // Create default settings for user
+      await db.run('INSERT INTO settings (user_id, theme, notify_email, reminder_time) VALUES (?, ?, ?, ?)', [
+        userId,
+        'dark',
+        1,
+        '09:00'
+      ]);
 
-    // Create default history log
-    await db.run(
-      'INSERT INTO history (user_id, action_type, description, metadata_json) VALUES (?, ?, ?, ?)',
-      [userId, 'auth', 'Account initialized successfully', JSON.stringify({ email: email.toLowerCase() })]
-    );
+      // Create default history log
+      await db.run(
+        'INSERT INTO history (user_id, action_type, description, metadata_json) VALUES (?, ?, ?, ?)',
+        [userId, 'auth', 'Account initialized successfully', JSON.stringify({ email: email.toLowerCase() })]
+      );
 
-    // Add initial achievements
-    await db.run(
-      'INSERT INTO achievements (user_id, title, description) VALUES (?, ?, ?)',
-      [userId, 'Core Activated', 'Successfully registered and initialized your FutureMe account.']
-    );
+      // Add initial achievements
+      await db.run(
+        'INSERT INTO achievements (user_id, title, description) VALUES (?, ?, ?)',
+        [userId, 'Core Activated', 'Successfully registered and initialized your FutureMe account.']
+      );
+
+      await db.run('COMMIT');
+      console.log(`[ONBOARDING_LOG] [${new Date().toISOString()}] [USER_CREATION] [SUCCESS] User ID ${userId} created and committed successfully.`);
+    } catch (txErr) {
+      await db.run('ROLLBACK');
+      console.error(`[ONBOARDING_LOG] [${new Date().toISOString()}] [USER_CREATION] [ROLLBACK] Failed to create user, rolling back:`, txErr.message);
+      throw txErr;
+    }
 
     // Issue token
     const token = jwt.sign({ id: userId, email: email.toLowerCase() }, JWT_SECRET, { expiresIn: '7d' });
@@ -192,25 +204,37 @@ async function googleMock(req, res) {
       // Create user with a dummy password
       const salt = await bcrypt.genSalt(10);
       const passwordHash = await bcrypt.hash('google_oauth_mock_password_123', salt);
-      const result = await db.run(
-        'INSERT INTO users (email, password_hash) VALUES (?, ?)',
-        [email, passwordHash]
-      );
-      userId = result.lastID;
+      
+      await db.run('BEGIN TRANSACTION');
+      try {
+        console.log(`[ONBOARDING_LOG] [${new Date().toISOString()}] [USER_CREATION] [START] Creating Google mock user: ${email}`);
+        const result = await db.run(
+          'INSERT INTO users (email, password_hash) VALUES (?, ?)',
+          [email, passwordHash]
+        );
+        userId = result.lastID;
 
-      // Create settings
-      await db.run('INSERT INTO settings (user_id, theme, notify_email, reminder_time) VALUES (?, ?, ?, ?)', [
-        userId,
-        'dark',
-        1,
-        '09:00'
-      ]);
+        // Create settings
+        await db.run('INSERT INTO settings (user_id, theme, notify_email, reminder_time) VALUES (?, ?, ?, ?)', [
+          userId,
+          'dark',
+          1,
+          '09:00'
+        ]);
 
-      // Achievements
-      await db.run(
-        'INSERT INTO achievements (user_id, title, description) VALUES (?, ?, ?)',
-        [userId, 'Core Activated', 'Successfully registered and initialized your FutureMe account.']
-      );
+        // Achievements
+        await db.run(
+          'INSERT INTO achievements (user_id, title, description) VALUES (?, ?, ?)',
+          [userId, 'Core Activated', 'Successfully registered and initialized your FutureMe account.']
+        );
+
+        await db.run('COMMIT');
+        console.log(`[ONBOARDING_LOG] [${new Date().toISOString()}] [USER_CREATION] [SUCCESS] Google mock user ID ${userId} created and committed successfully.`);
+      } catch (txErr) {
+        await db.run('ROLLBACK');
+        console.error(`[ONBOARDING_LOG] [${new Date().toISOString()}] [USER_CREATION] [ROLLBACK] Failed to create Google mock user, rolling back:`, txErr.message);
+        throw txErr;
+      }
     } else {
       userId = user.id;
     }
