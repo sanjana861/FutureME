@@ -35,7 +35,7 @@ if (!fs.existsSync(uploadDir)) {
 app.use('/uploads', express.static(uploadDir));
 
 // Serve static frontend files
-app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname, 'docs')));
 
 // Register API Routes
 app.use('/api/auth', authRoutes);
@@ -52,7 +52,7 @@ app.use('/api/settings', settingsRoutes);
 app.get('*', (req, res, next) => {
   // If requesting api, let it pass to 404 handler
   if (req.url.startsWith('/api/')) return next();
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'docs', 'index.html'));
 });
 
 // 404 Route handler for API
